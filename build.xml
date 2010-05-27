@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<project default="main">
+  <property name="package_path" value="hk/hku/cs/data/preprocessor" />
+  <property name="bin" value="bin" />
+  <property name="bin_dir" location="${bin}" />
+  <property name="src_dir" location="src/${package_path}" />
+  <property name="dist" value="dist" />
+  <property name="jar_dir" location="${dist}" />
+  <property name="jar" location="${dist}/preprocessor.jar" />
+
+  <target name="main" depends="compile, compress" />
+
+  <target name="compile">
+    <javac srcdir="${src_dir}" destdir="${bin_dir}" excludes="*Test.java" />
+  </target>
+
+  <target name="compress">
+    <mkdir dir="${jar_dir}" />
+    <jar destfile="${jar}" update="true">
+      <fileset dir="${bin_dir}">
+	<include name="${package_path}/*.class" />
+	<exclude name="${package_path}/*Test.class" />
+      </fileset>
+    </jar>
+  </target>
+</project>

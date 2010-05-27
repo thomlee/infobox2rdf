@@ -1,0 +1,22 @@
+<test>
+  <template>
+    <name>Infobox infobox1</name>
+    <content>#REDIRECT [[Template:Infobox infobox2]]</content>
+  </template>
+  <template>
+    <name>Infobox infobox2</name>
+    <content>#Redirect [[Template:Infobox infobox3]]</content>
+  </template>
+  <template>
+    <name>Infobox infobox3</name>
+    <content>foo</content>
+  </template>
+  <template>
+    <name>item</name>
+    <content>bar</content>
+  </template>
+  <template>
+    <name>Infobox infobox1/doc</name>
+    <content>#redirect [[Template:Infobox infobox3]]</content>
+  </template>
+</test>
