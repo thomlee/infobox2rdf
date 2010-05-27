@@ -7,7 +7,5 @@ This extraction tool allows user to generate Wikipedia infobox data in Resource 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Description ==
+This tool extracts the infobox RDF data from the Wikipedia data dumps in XML format. 
