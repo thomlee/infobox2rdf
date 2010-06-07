@@ -11,13 +11,23 @@ Wikipedia is a good data source because of its large scale and is always changin
 
 We aims at providing an extraction toolkit which enables users to generate Wikipedia infobox RDF data rom Wikipedia XML data dumps.
 
-= Details =
-
-== Description ==
+= Description =
 This toolkit extracts the infobox RDF data from the Wikipedia data dumps in XML format, and the extracted data are stored in a user-specified PostgreSQL database. It consists of a preliminary extraction tool, a data cleansing tool, and the RDF data extraction tool, and they are used in different phases.
 
 == Preliminary Extraction ==
 Besides the infobox contents, the Wikipedia data dump also contains other data such as page paragraphs. In order to speed up the performance for subsequent cleansing and extraction processes, it is better to extract essential contents only into an intermediate XML file.
 
 == Data Cleansing ==
-This process removes the WikiMedia markups, comments and HTML tags from the infobox data. It also performs infobox redirection, which replaces infobox alias names by their canonical names.
+This process removes the WikiMedia markups, comments and HTML tags from the infobox data. It also performs infobox redirection, which replaces infobox alias names by their canonical names, and so semantically identical infoboxes can be grouped together.
+
+== Infobox RDF Data Extraction ==
+The cleansed infobox data are extract into RDF dataset according to the following logic:
+ * The subject is the page name
+ * The predicate is the concatenation of the infobox name, the "#" symbol and the infobox property name (e.g. Bridge#bridge_name)
+ * The object is extracted from the property value, and a property value may produce one or more objects, thus several RDF triplets may be generated
+
+It is recommended to refer to the technical report for the technical details of the above processes.
+
+= Usage Guide =
+ # Download the data dump from the download site [http://dumps.wikimedia.org/backup-index.html] 
+ # 
