@@ -29,5 +29,4 @@ The cleansed infobox data are extract into RDF dataset according to the followin
 It is recommended to refer to the technical report for the technical details of the above processes.
 
 = Usage Guide =
- # Download the data dump from the download site [http://dumps.wikimedia.org/backup-index.html] 
- # 
+ # Download the data dump from the download site [http://dumps.wikimedia.org/enwiki/] (English Wikipedia, you may select other languages).
