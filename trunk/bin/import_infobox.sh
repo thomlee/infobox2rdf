@@ -1,1 +1,1 @@
-java -cp ../lib/postgresql-8.4-701.jdbc4.jar:../dist/preprocessor.jar hk.hku.cs.data.preprocessor.infobox2Tri $*
+java -cp ../lib/$1:../dist/preprocessor.jar hk.hku.cs.data.preprocessor.infobox2Tri $2 $3 $4 $5 $6
