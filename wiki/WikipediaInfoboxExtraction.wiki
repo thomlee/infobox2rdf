@@ -3,15 +3,21 @@
 = Introduction =
 
 There are many researches that require an appropriate Resource Description Framework (RDF) dataset for their experiments. However, we still lack such a good dataset because:
-# Some existing datasets do not contain large numbers of triplets, resources, or predicates, and so the scalability of real world data (e.g. Wikipedia) cannot be reflected.
-# Some datasets require specific domain knowledge
+ # Some existing datasets do not contain large numbers of triplets, resources, or predicates, and so the scalability of real world data (e.g. Wikipedia) cannot be reflected.
+ # Some datasets are static (which is not suitable for testing database update approaches)
+ # Some datasets require specific domain knowledge
 
-This extraction toolkit enables user to generate Wikipedia infobox data in Resource Description Framework (RDF) format from Wikipedia data dumps.
+Wikipedia is a good data source because of its large scale and is always changing as it is collaboratively contributed by authors. Moreover, most of its contents can be understood by readers. Wikipedia is frequently backed up to data dumps in XML format available for download. Its structured infobox data can be converted into RDF format.
 
+We aims at providing an extraction toolkit which enables users to generate Wikipedia infobox RDF data rom Wikipedia XML data dumps.
 
 = Details =
 
 == Description ==
-This toolkit extracts the infobox RDF data from the Wikipedia data dumps in XML format, and the extracted data are stored in a user-specified PostgreSQL database.
+This toolkit extracts the infobox RDF data from the Wikipedia data dumps in XML format, and the extracted data are stored in a user-specified PostgreSQL database. It consists of a preliminary extraction tool, a data cleansing tool, and the RDF data extraction tool, and they are used in different phases.
 
-The toolkit consists of a preliminary extraction tool, a data cleansing tool, and the RDF data extraction tool. 
+== Preliminary Extraction ==
+Besides the infobox contents, the Wikipedia data dump also contains other data such as page paragraphs. In order to speed up the performance for subsequent cleansing and extraction processes, it is better to extract essential contents only into an intermediate XML file.
+
+== Data Cleansing ==
+This process removes the WikiMedia markups, comments and HTML tags from the infobox data. It also performs infobox redirection, which replaces infobox alias names by their canonical names.
