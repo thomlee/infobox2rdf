@@ -29,4 +29,18 @@ The cleansed infobox data are transformed into an RDF dataset according to the f
 *It is recommended to refer to the technical report for more technical details of the above processes.*
 
 = Usage Guide =
- # Download the data dump from the download site [http://dumps.wikimedia.org/enwiki/] (English Wikipedia, you may select other languages as well).
+
+== Pre-requisites ==
+ # JRE 6 or higher
+ # PostgreSQL server and its JDBC driver
+ # libxml-parser-perl
+ # libparse-mediawikidump
+
+== Procedures ==
+ # Visit the data dump download site [http://dumps.wikimedia.org/enwiki/] (English Wikipedia, you may select other languages as well), select the directory according to the date of the dump you want. Then, select the page articles dump of which the file name is in the format of "enwiki-yyyymmdd-pages-articles.xml.bz2" where yyyymmdd is the date of the dump
+ # Checkout the toolkit and build the necessary JAR file by Ant using the build.xml file
+ # Infobox data extraction - in the bin directory, execute the Perl program "infoboxAndTemplateExtractor.pl" by running the command "bzcat" on the dump file and pipelining the output to the program:<br/><code>`bzcat <data dump file path> | ./infoboxAndTemplateExtractor.pl <infobox data XML file path> <template XML file path>`</code><br/>The infobox data XML file path and the template XML file path (for infobox redirection) must also be specified as input arguments to the program
+ # Data cleansing - in the bin directory, execute the shell script "cleanse_infobox.sh":<br/><code>`./cleanse_infobox.sh <infobox data XML file path> <template XML file path> <cleansed data XML file path>`</code><br/>where the infobox data XML file and the template XML file are obtained from the previous step
+ # RDF conversion - in the bin directory, execute the shell script "import_infobox.sh":<br/><code>`./import_infobox.sh <postgreSQL JDBC driver file path> <cleansed data XML file path> <postgreSQL database name> <database user name> <database password> [batch size]`</code><br/>the batch size is an optional parameter which specifies the number of RDF triplet insertion executed in a batch, the default value is 500,000
+
+ 
