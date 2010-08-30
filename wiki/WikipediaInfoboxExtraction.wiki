@@ -36,6 +36,8 @@ The cleansed infobox data are transformed into an RDF dataset according to the f
  # libxml-parser-perl
  # libparse-mediawikidump
 
+*For Ubuntu OS the Perl libraries (third and fourth components) can be obtained easily through apt-get or synaptic package manager.* 
+
 == Procedures ==
  # Visit the data dump download site [http://dumps.wikimedia.org/enwiki/] (English Wikipedia, you may select other languages as well), select the directory according to the date of the dump you want. Then, select the page articles dump of which the file name is in the format of "enwiki-yyyymmdd-pages-articles.xml.bz2" where yyyymmdd is the date of the dump
  # Checkout the toolkit and build the necessary JAR file by Ant using the build.xml file
