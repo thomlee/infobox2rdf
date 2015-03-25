@@ -1,0 +1,1 @@
+This program allows users to generate huge RDF datasets from the infobox data in Wikipedia dump files.
